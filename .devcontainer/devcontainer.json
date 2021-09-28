@@ -1,0 +1,24 @@
+{
+    "name": "Flutter",
+    "context": "..",
+    "dockerFile": "../.docker/flutter.dockerfile",
+    "extensions": [
+        "dart-code.dart-code",
+        "dart-code.flutter",
+        "localizely.flutter-intl"
+    ],
+    "mounts": [
+        "source=/dev/bus/usb,target=/dev/bus/usb,type=bind"
+    ],
+    "runArgs": [
+        "--privileged",
+        "--device",
+        "/dev/kvm",
+        "--device",
+        "/dev/dri:/dev/dri",
+        "-v",
+        "/tmp/.X11-unix:/tmp/.X11-unix",
+        "-e",
+        "DISPLAY"
+    ]
+}
