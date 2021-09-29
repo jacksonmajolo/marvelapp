@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart' show CupertinoApp, CupertinoThemeData;
+import 'package:flutter/material.dart' show MaterialApp, ThemeData;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:marvelapp/pages/home.dart';
-import 'package:marvelapp/pages/splash.dart';
+import 'package:marvelapp/configs/routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,17 +24,9 @@ class MarvelApp extends StatelessWidget {
         },
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        theme: CupertinoThemeData(primaryColor: Colors.blue),
-        home: FutureBuilder(
-          future: Init.instance.initialize(),
-          builder: (context, AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return SplashPage();
-            } else {
-              return HomePage(title: AppLocalizations.of(context)!.appTitle);
-            }
-          },
-        ),
+        theme: CupertinoThemeData(),
+        onGenerateRoute: AppRouter.generateRoute,
+        home: _builder(context),
       );
     }
 
@@ -45,16 +37,28 @@ class MarvelApp extends StatelessWidget {
       },
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: FutureBuilder(
-        future: Init.instance.initialize(),
-        builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return SplashPage();
-          } else {
-            return HomePage(title: AppLocalizations.of(context)!.appTitle);
-          }
-        },
-      ),
+      theme: ThemeData(),
+      onGenerateRoute: AppRouter.generateRoute,
+      home: _builder(context),
+    );
+  }
+
+  Widget _builder(BuildContext context) {
+    return FutureBuilder(
+      future: Init.instance.initialize(),
+      builder: (context, AsyncSnapshot snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return AppRouter.get(
+            context,
+            RouteSettings(name: AppRoutes.splash),
+          );
+        } else {
+          return AppRouter.get(
+            context,
+            RouteSettings(name: AppRoutes.home),
+          );
+        }
+      },
     );
   }
 }
