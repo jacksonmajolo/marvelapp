@@ -7,7 +7,7 @@ class NotFoundPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(AppLocalizations.of(context)!.appTitle),
+        child: Text(AppLocalizations.of(context)!.pageNotFound),
       ),
     );
   }

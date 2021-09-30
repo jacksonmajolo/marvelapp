@@ -1,4 +1,9 @@
 {
   "@@locale": "en",
-  "appTitle": "Marvel App - en"
+  "appTitle": "Marvel App - en",
+  "pageNotFound": "Page not found!",
+  "@pageNotFound": {
+    "description": "Page not found!",
+    "placeholders": {}
+  }
 }
