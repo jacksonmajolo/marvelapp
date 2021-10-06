@@ -17,11 +17,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(AppLocalizations.of(context)!.appTitle)),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _actionButton,
-          tooltip: 'Increment',
-          child: Icon(Icons.add),
-        ));
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.appTitle)),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _actionButton,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
