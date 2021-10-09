@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart' show CupertinoActivityIndicator;
 import 'package:flutter/material.dart' show CircularProgressIndicator;
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart'
+    show Widget, StatelessWidget, BuildContext, Center;
 
-class LoadingIndicator extends StatelessWidget {
+class AppLoadingIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (Platform.isIOS) {

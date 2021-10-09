@@ -1,4 +1,4 @@
-import 'package:marvelapp/core/record.dart';
+import 'package:core/record.dart';
 
 class Character extends Record {
   String? name;

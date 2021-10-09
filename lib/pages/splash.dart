@@ -5,6 +5,6 @@ import 'package:marvelapp/widgets/indicator.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: LoadingIndicator());
+    return Scaffold(body: AppLoadingIndicator());
   }
 }
