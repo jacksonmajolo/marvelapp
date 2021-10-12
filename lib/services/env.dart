@@ -6,10 +6,12 @@ abstract class IEnvService {
 }
 
 class DotEnvService implements IEnvService {
+  @override
   Future<void> load({String? file}) async {
-    await dotenv.load(fileName: (file ?? "assets/.env"));
+    await dotenv.load(fileName: file ?? "assets/.env");
   }
 
+  @override
   String get(String key) {
     return dotenv.get(key);
   }
@@ -21,10 +23,10 @@ class EnvService {
   EnvService(this.env);
 
   Future<void> load({String? file}) async {
-    this.env.load(file: file);
+    env.load(file: file);
   }
 
   String get(String key) {
-    return this.env.get(key);
+    return env.get(key);
   }
 }

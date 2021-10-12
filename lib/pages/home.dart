@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:marvelapp/widgets/responsive.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   void _actionButton() {
-    Navigator.of(context).pushNamed(AppRoutes.not_found, arguments: {1, 2});
+    Navigator.of(context).pushNamed(AppRoutes.notFound, arguments: {1, 2});
   }
 
   @override
@@ -22,11 +22,10 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _actionButton,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: ResponsiveLayout(
         mobileLayout: _HomePageMobile(),
-        tabletLayout: _HomePageTablet(),
       ),
     );
   }
@@ -35,13 +34,6 @@ class _HomePageState extends State<HomePage> {
 class _HomePageMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text('Mobile'));
-  }
-}
-
-class _HomePageTablet extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(child: Text('Tablet'));
+    return const Text('Mobile');
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart'
 
 abstract class PlatformWidget<C extends Widget, M extends Widget>
     extends StatelessWidget {
-  PlatformWidget({Key? key}) : super(key: key);
+  const PlatformWidget({Key? key}) : super(key: key);
 
   C buildCupertinoWidget(BuildContext context);
   M buildMaterialWidget(BuildContext context);

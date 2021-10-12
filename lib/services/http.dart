@@ -37,7 +37,7 @@ class HttpService implements IHttpService {
   }
 
   dynamic _response(http.Response response) {
-    var result = jsonDecode(response.body);
+    final result = jsonDecode(response.body);
     if (response.statusCode == HttpStatus.ok) {
       return result;
     } else {
@@ -52,20 +52,20 @@ class ClientHttpService {
   ClientHttpService(this.client);
 
   Future<dynamic> get(String url, {Map<String, String>? headers}) {
-    return this.client.get(url, headers: headers);
+    return client.get(url, headers: headers);
   }
 
   Future<dynamic> post(String url, dynamic body,
       {Map<String, String>? headers}) {
-    return this.client.post(url, body, headers: headers);
+    return client.post(url, body, headers: headers);
   }
 
   Future<dynamic> put(String url, dynamic body,
       {Map<String, String>? headers}) {
-    return this.client.put(url, body, headers: headers);
+    return client.put(url, body, headers: headers);
   }
 
   Future<dynamic> delete(String url, {Map<String, String>? headers}) {
-    return this.client.delete(url, headers: headers);
+    return client.delete(url, headers: headers);
   }
 }

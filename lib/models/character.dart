@@ -5,6 +5,7 @@ class Character extends Record {
 
   Character({int? id}) : super(id: id);
 
+  @override
   Map<String, dynamic> toMap() {
     return {"id": id, "name": name};
   }

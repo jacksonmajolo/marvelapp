@@ -1,17 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart' show CupertinoActivityIndicator;
 import 'package:flutter/material.dart' show CircularProgressIndicator;
-import 'package:flutter/widgets.dart'
-    show Widget, StatelessWidget, BuildContext, Center;
+import 'package:flutter/widgets.dart' show Widget, BuildContext;
+import 'package:marvelapp/widgets/platform.dart';
 
-class AppLoadingIndicator extends StatelessWidget {
+class AppLoadingIndicator extends PlatformWidget {
   @override
-  Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return Center(child: CupertinoActivityIndicator());
-    }
+  Widget buildCupertinoWidget(BuildContext context) {
+    return const CupertinoActivityIndicator();
+  }
 
-    return Center(child: CircularProgressIndicator());
+  @override
+  Widget buildMaterialWidget(BuildContext context) {
+    return const CircularProgressIndicator();
   }
 }

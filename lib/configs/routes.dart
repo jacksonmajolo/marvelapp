@@ -8,21 +8,22 @@ import 'package:marvelapp/pages/not_found.dart';
 import 'package:marvelapp/pages/splash.dart';
 
 class AppRoutes {
-  static const home = '/';
   static const splash = '/splash';
-  static const not_found = '/not-found';
+  static const welcome = '/welcome';
+  static const notFound = '/not-found';
+  static const home = '/home';
 }
 
 class AppRouter {
-  static get(BuildContext context, RouteSettings settings) {
+  static Widget get(BuildContext context, RouteSettings settings) {
     // final args = settings.arguments;
 
     switch (settings.name) {
       case AppRoutes.home:
-        return HomePage();
+        return const HomePage();
       case AppRoutes.splash:
         return SplashPage();
-      case AppRoutes.not_found:
+      case AppRoutes.notFound:
         return NotFoundPage();
       default:
         return NotFoundPage();
@@ -40,8 +41,4 @@ class AppRouter {
       builder: (context) => AppRouter.get(context, settings),
     );
   }
-
-  // static Future<void> navigate(BuildContext context, String route) async {
-  //   print('navigate');
-  // }
 }
