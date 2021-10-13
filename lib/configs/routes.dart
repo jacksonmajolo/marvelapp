@@ -1,5 +1,6 @@
-import 'dart:io';
+// ignore_for_file: avoid_classes_with_only_static_members
 
+import 'dart:io';
 import 'package:flutter/cupertino.dart' show CupertinoPageRoute;
 import 'package:flutter/material.dart' show MaterialPageRoute;
 import 'package:flutter/widgets.dart';

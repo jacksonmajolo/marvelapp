@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:marvelapp/configs/routes.dart';
-import 'package:flutter/material.dart';
 import 'package:marvelapp/widgets/responsive.dart';
 
 class HomePage extends StatefulWidget {
