@@ -5,7 +5,8 @@
     "extensions": [
         "dart-code.dart-code",
         "dart-code.flutter",
-        "localizely.flutter-intl"
+        "localizely.flutter-intl",
+        "pkief.material-icon-theme"
     ],
     "mounts": [
         "source=/dev/bus/usb,target=/dev/bus/usb,type=bind"
