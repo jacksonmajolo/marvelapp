@@ -6,7 +6,8 @@
         "dart-code.dart-code",
         "dart-code.flutter",
         "localizely.flutter-intl",
-        "pkief.material-icon-theme"
+        "pkief.material-icon-theme",
+        "redhat.vscode-yaml"
     ],
     "mounts": [
         "source=/dev/bus/usb,target=/dev/bus/usb,type=bind"
