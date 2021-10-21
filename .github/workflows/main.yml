@@ -2,21 +2,24 @@ name: Flutter CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
 
       - name: Flutter action
         uses: subosito/flutter-action@v1.5.3
+
+      - name: Env file
+        run: touch assets/.env
 
       - name: Analyze
         run: flutter analyze
