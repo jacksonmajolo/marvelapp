@@ -17,6 +17,6 @@ class SplashPage extends StatelessWidget {
 class _SplashPageMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: AppLoadingIndicator());
+    return Center(child: LoadingIndicator());
   }
 }
