@@ -3,12 +3,15 @@ import 'package:flutter/material.dart' show MaterialApp, ThemeData;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:marvelapp/configs/init.dart';
-import 'package:marvelapp/configs/routes.dart';
+import 'package:marvelapp/configs/route.dart';
+import 'package:marvelapp/widgets/indicator.dart';
 import 'package:marvelapp/widgets/platform.dart';
 
 class App extends PlatformWidget {
-  const App({Key? key}) : super(key: key);
+  final String? home;
+  final String? splash;
 
+  const App({Key? key, this.home, this.splash}) : super(key: key);
   @override
   Widget buildCupertinoWidget(BuildContext context) {
     return CupertinoApp(
@@ -42,15 +45,13 @@ class App extends PlatformWidget {
       future: Init.instance.initialize(),
       builder: (context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return AppRouter.get(
-            context,
-            const RouteSettings(name: AppRoutes.splash),
-          );
+          return splash != null
+              ? AppRouter.get(context, RouteSettings(name: splash))
+              : LoadingIndicator();
         } else {
-          return AppRouter.get(
-            context,
-            const RouteSettings(name: AppRoutes.home),
-          );
+          return home != null
+              ? AppRouter.get(context, RouteSettings(name: home))
+              : Container();
         }
       },
     );
