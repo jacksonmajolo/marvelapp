@@ -5,7 +5,7 @@ import 'package:marvelapp/widgets/app.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const App(
-    home: AppRoutes.home,
+    AppRoutes.home,
     splash: AppRoutes.splash,
   ));
 }

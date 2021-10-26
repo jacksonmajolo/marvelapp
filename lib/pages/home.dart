@@ -24,9 +24,7 @@ class _HomePageState extends State<HomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
-      body: ResponsiveLayout(
-        mobileLayout: _HomePageMobile(),
-      ),
+      body: ResponsiveLayout(mobileLayout: _HomePageMobile()),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:marvelapp/widgets/indicator.dart';
@@ -6,10 +7,8 @@ import 'package:marvelapp/widgets/responsive.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ResponsiveLayout(
-        mobileLayout: _SplashPageMobile(),
-      ),
+    return ResponsiveLayout(
+      mobileLayout: _SplashPageMobile(),
     );
   }
 }
@@ -17,6 +16,8 @@ class SplashPage extends StatelessWidget {
 class _SplashPageMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: LoadingIndicator());
+    return Center(
+      child: LoadingIndicator(),
+    );
   }
 }

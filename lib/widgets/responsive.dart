@@ -1,6 +1,11 @@
 import 'package:flutter/widgets.dart'
     show Widget, StatelessWidget, BuildContext, Key, LayoutBuilder;
 
+class ResponsiveSizes {
+  static const mobile = 768.0;
+  static const desktop = 1440.0;
+}
+
 class ResponsiveLayout extends StatelessWidget {
   final Widget mobileLayout;
   final Widget? tabletLayout;
@@ -16,10 +21,10 @@ class ResponsiveLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < 768.0) {
+      if (constraints.maxWidth < ResponsiveSizes.mobile) {
         return mobileLayout;
-      } else if (constraints.maxWidth >= 768.0 &&
-          constraints.maxWidth > 1440.0) {
+      } else if (constraints.maxWidth >= ResponsiveSizes.mobile &&
+          constraints.maxWidth < ResponsiveSizes.desktop) {
         return tabletLayout ?? mobileLayout;
       } else {
         return desktopLayout ?? (tabletLayout ?? mobileLayout);

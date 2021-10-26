@@ -7,53 +7,59 @@ import 'package:marvelapp/configs/route.dart';
 import 'package:marvelapp/widgets/indicator.dart';
 import 'package:marvelapp/widgets/platform.dart';
 
-class App extends PlatformWidget {
-  final String? home;
+class App extends StatelessWidget {
+  final String home;
   final String? splash;
 
-  const App({Key? key, this.home, this.splash}) : super(key: key);
-  @override
-  Widget buildCupertinoWidget(BuildContext context) {
-    return CupertinoApp(
-      onGenerateTitle: (BuildContext context) {
-        return AppLocalizations.of(context)!.appTitle;
-      },
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      theme: const CupertinoThemeData(),
-      onGenerateRoute: AppRouter.generateRoute,
-      home: _builder(context),
-    );
-  }
+  const App(this.home, {Key? key, this.splash}) : super(key: key);
 
   @override
-  Widget buildMaterialWidget(BuildContext context) {
-    return MaterialApp(
-      onGenerateTitle: (BuildContext context) {
-        return AppLocalizations.of(context)!.appTitle;
-      },
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      theme: ThemeData(),
-      onGenerateRoute: AppRouter.generateRoute,
-      home: _builder(context),
-    );
-  }
-
-  Widget _builder(BuildContext context) {
+  Widget build(BuildContext context) {
     return FutureBuilder(
       future: Init.instance.initialize(),
       builder: (context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return splash != null
               ? AppRouter.get(context, RouteSettings(name: splash))
-              : LoadingIndicator();
+              : Center(child: LoadingIndicator());
         } else {
-          return home != null
-              ? AppRouter.get(context, RouteSettings(name: home))
-              : Container();
+          return _AppBuilder(home);
         }
       },
+    );
+  }
+}
+
+class _AppBuilder extends PlatformWidget<CupertinoApp, MaterialApp> {
+  final String home;
+
+  const _AppBuilder(this.home, {Key? key}) : super(key: key);
+
+  @override
+  CupertinoApp buildCupertinoWidget(BuildContext context) {
+    return CupertinoApp(
+      onGenerateTitle: (BuildContext context) {
+        return AppLocalizations.of(context)!.appTitle;
+      },
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      onGenerateRoute: AppRouter.generateRoute,
+      theme: const CupertinoThemeData(),
+      home: AppRouter.get(context, RouteSettings(name: home)),
+    );
+  }
+
+  @override
+  MaterialApp buildMaterialWidget(BuildContext context) {
+    return MaterialApp(
+      onGenerateTitle: (BuildContext context) {
+        return AppLocalizations.of(context)!.appTitle;
+      },
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      onGenerateRoute: AppRouter.generateRoute,
+      theme: ThemeData(),
+      home: AppRouter.get(context, RouteSettings(name: home)),
     );
   }
 }
