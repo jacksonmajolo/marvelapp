@@ -1,11 +1,13 @@
-import 'package:flutter/cupertino.dart' show CupertinoApp, CupertinoThemeData;
-import 'package:flutter/material.dart' show MaterialApp, ThemeData;
+import 'package:flutter/cupertino.dart' show CupertinoApp;
+import 'package:flutter/material.dart' show MaterialApp;
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:marvelapp/configs/init.dart';
 import 'package:marvelapp/configs/route.dart';
+import 'package:marvelapp/configs/theme.dart';
 import 'package:marvelapp/widgets/indicator.dart';
 import 'package:marvelapp/widgets/platform.dart';
+import 'package:marvelapp/widgets/theme.dart';
 
 class App extends StatelessWidget {
   final String home;
@@ -23,7 +25,10 @@ class App extends StatelessWidget {
               ? AppRouter.get(context, RouteSettings(name: splash))
               : Center(child: LoadingIndicator());
         } else {
-          return _AppBuilder(home);
+          return AnimatedBuilder(
+            animation: ThemeController.instance,
+            builder: (context, child) => _AppBuilder(home),
+          );
         }
       },
     );
@@ -44,8 +49,13 @@ class _AppBuilder extends PlatformWidget<CupertinoApp, MaterialApp> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateRoute: AppRouter.generateRoute,
-      theme: const CupertinoThemeData(),
-      home: AppRouter.get(context, RouteSettings(name: home)),
+      theme: ThemeController.instance.themeType == ThemeType.light
+          ? AppThemeDataCupertino.instance.lightTheme
+          : AppThemeDataCupertino.instance.darkTheme,
+      home: AppRouter.get(
+        context,
+        RouteSettings(name: home),
+      ),
     );
   }
 
@@ -58,8 +68,13 @@ class _AppBuilder extends PlatformWidget<CupertinoApp, MaterialApp> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateRoute: AppRouter.generateRoute,
-      theme: ThemeData(),
-      home: AppRouter.get(context, RouteSettings(name: home)),
+      theme: ThemeController.instance.themeType == ThemeType.light
+          ? AppThemeDataMaterial.instance.lightTheme
+          : AppThemeDataMaterial.instance.darkTheme,
+      home: AppRouter.get(
+        context,
+        RouteSettings(name: home),
+      ),
     );
   }
 }

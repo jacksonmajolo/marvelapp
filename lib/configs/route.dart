@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart' show CupertinoPageRoute;
 import 'package:flutter/material.dart' show MaterialPageRoute;
 import 'package:flutter/widgets.dart';
-import 'package:marvelapp/pages/home.dart';
-import 'package:marvelapp/pages/not_found.dart';
-import 'package:marvelapp/pages/splash.dart';
+import 'package:marvelapp/pages/home/home_page.dart';
+import 'package:marvelapp/pages/not_found/not_found_page.dart';
+import 'package:marvelapp/pages/splash/splash_page.dart';
 
 class AppRoutes {
   static const splash = '/splash';
@@ -21,7 +21,7 @@ class AppRouter {
 
     switch (settings.name) {
       case AppRoutes.home:
-        return const HomePage();
+        return HomePage();
       case AppRoutes.splash:
         return SplashPage();
       case AppRoutes.notFound:
