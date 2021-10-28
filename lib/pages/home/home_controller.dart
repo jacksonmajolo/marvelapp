@@ -1,3 +1,1 @@
-class HomeController {
-  
-}
+class HomeController {}

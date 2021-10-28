@@ -3,5 +3,11 @@ abstract class Record {
 
   Record({this.id});
 
-  Map<String, dynamic> toMap();
+  Record.fromJson(Map<String, dynamic> json) {
+    id = json['id'] as int;
+  }
+
+  Map<String, dynamic> toMap() {
+    return {'id': id};
+  }
 }

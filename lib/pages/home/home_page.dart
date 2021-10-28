@@ -7,7 +7,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.appTitle)),
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.appTitle),
+      ),
       body: ResponsiveLayout(
         mobileLayout: _HomePageMobile(),
       ),
