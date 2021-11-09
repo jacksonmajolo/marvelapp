@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:marvelapp/components/page.dart';
 import 'package:marvelapp/widgets/responsive.dart';
-import 'package:marvelapp/widgets/theme.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -17,16 +17,21 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _HomePageMobile extends StatelessWidget {
+class _HomePageMobile extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Switch(
-        value: ThemeController.instance.themeType == ThemeType.dark,
-        onChanged: (value) {
-          ThemeController.instance.changeTheme();
-        },
-      ),
+  MarvelPage<_HomePageMobile> createState() => _HomePageMobileState();
+}
+
+class _HomePageMobileState extends MarvelPage<_HomePageMobile> {
+  @override
+  Future<void> initialize() async {
+    await Future.delayed(const Duration(seconds: 1));
+  }
+
+  @override
+  Widget buildWidget(BuildContext context) {
+    return const Center(
+      child: Text('sucess'),
     );
   }
 }

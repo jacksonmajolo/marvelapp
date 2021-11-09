@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:marvelapp/components/page.dart';
 import 'package:marvelapp/widgets/responsive.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -13,9 +14,14 @@ class WelcomePage extends StatelessWidget {
   }
 }
 
-class _WelcomePageMobile extends StatelessWidget {
+class _WelcomePageMobile extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
+  MarvelPage<_WelcomePageMobile> createState() => _WelcomePageMobileState();
+}
+
+class _WelcomePageMobileState extends MarvelPage<_WelcomePageMobile> {
+  @override
+  Widget buildWidget(BuildContext context) {
     return Container();
   }
 }
