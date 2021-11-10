@@ -9,13 +9,14 @@ class PageController {
 abstract class AppPage<T extends StatefulWidget> extends State {
   final PageController pageController = PageController();
 
-  late Widget? _pageWidget;
-  late Exception? _error;
+  late Object? _error;
+  late StackTrace? _stackTrace;
 
   Future<void> initialize() async {}
-  Widget buildWidget(BuildContext context);
-  Widget buildErrorWidget(BuildContext context, Exception error);
   Widget buildLoadingWidget(BuildContext context);
+  Widget buildWidget(BuildContext context);
+  Widget buildErrorWidget(BuildContext context,
+      {Object? error, StackTrace? stackTrace});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,13 @@ abstract class AppPage<T extends StatefulWidget> extends State {
           case PageState.loading:
             return buildLoadingWidget(context);
           case PageState.error:
-            return buildErrorWidget(context, _error!);
+            return buildErrorWidget(
+              context,
+              error: _error,
+              stackTrace: _stackTrace,
+            );
           default:
-            return _pageWidget!;
+            return buildWidget(context);
         }
       },
     );
@@ -38,10 +43,11 @@ abstract class AppPage<T extends StatefulWidget> extends State {
   Future<void> pageBuilder() async {
     pageController.state.value = PageState.loading;
     initialize().then((value) {
-      _pageWidget = buildWidget(context);
       pageController.state.value = PageState.sucess;
-    }).onError((Exception error, StackTrace trace) {
+    }).onError((Object? error, StackTrace stackTrace) {
       _error = error;
+      _stackTrace = stackTrace;
+
       pageController.state.value = PageState.error;
     });
   }
