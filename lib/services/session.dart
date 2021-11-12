@@ -61,25 +61,3 @@ class SharedPreferencesService implements ISessionService {
     return prefs.clear();
   }
 }
-
-class SessionService {
-  final ISessionService session;
-
-  SessionService(this.session);
-
-  Future<bool> set(String key, dynamic value) async {
-    return session.set(key, value);
-  }
-
-  Future<Object?> get(String key) async {
-    return session.get(key);
-  }
-
-  Future<bool> remove(String key) async {
-    return session.remove(key);
-  }
-
-  Future<bool> clear() async {
-    return session.clear();
-  }
-}
