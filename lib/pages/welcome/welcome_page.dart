@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:marvelapp/components/page.dart';
+import 'package:marvelapp/pages/welcome/welcome_controller.dart';
 import 'package:marvelapp/widgets/responsive.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -20,6 +21,13 @@ class _WelcomePageMobile extends StatefulWidget {
 }
 
 class _WelcomePageMobileState extends MarvelPage<_WelcomePageMobile> {
+  WelcomeController controller = WelcomeController();
+
+  @override
+  Future<void> initialize() async {
+    controller.initialize();
+  }
+
   @override
   Widget buildWidget(BuildContext context) {
     return Container();
