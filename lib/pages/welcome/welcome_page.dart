@@ -25,7 +25,7 @@ class _WelcomePageMobileState extends MarvelPage<_WelcomePageMobile> {
 
   @override
   Future<void> initialize() async {
-    controller.initialize();
+    await controller.initialize();
   }
 
   @override

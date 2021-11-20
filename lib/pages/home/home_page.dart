@@ -10,6 +10,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(context, '/setting');
+            },
+          )
+        ],
       ),
       body: ResponsiveLayout(
         mobileLayout: _HomePageMobile(),
@@ -28,13 +36,23 @@ class _HomePageMobileState extends MarvelPage<_HomePageMobile> {
 
   @override
   Future<void> initialize() async {
-    controller.initialize();
+    await controller.initialize();
   }
 
   @override
   Widget buildWidget(BuildContext context) {
-    return const Center(
-      child: Text('sucess'),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            child: const Text('Rota'),
+            onPressed: () {
+              Navigator.pushNamed(context, '/errada');
+            },
+          ),
+        ],
+      ),
     );
   }
 }
