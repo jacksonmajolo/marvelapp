@@ -1,16 +1,55 @@
-# marvelapp
+# Marvel app
 
-A new Flutter project.
+Aplicativo criado usando devcontainer, internacionalização, componentes nativos, responsividade e etc.
 
-## Getting Started
+## Requisitos
 
-This project is a starting point for a Flutter application.
+Docker
 
-A few resources to get you started if this is your first Flutter project:
+Visual Studio Code
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Setup
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Instalar extensão do vscode [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+## Comandos
+
+Limpezas
+```bash
+flutter clean
+```
+
+Dependências
+```bash
+flutter pub get
+```
+
+Testes
+```bash
+flutter test
+```
+
+Análises
+```bash
+flutter analyze
+```
+
+Gerador de arquivos
+```bash
+flutter pub run build_runner build
+```
+
+Renomear app
+```bash
+flutter pub run flutter_app_name
+```
+
+Ícones app
+```bash
+flutter pub run flutter_launcher_icons:main
+```
+
+Tela de abertura nativa app
+```bash
+flutter pub run flutter_native_splash:create
+```
