@@ -10,4 +10,9 @@ abstract class Record {
   Map<String, dynamic> toMap() {
     return {'id': id};
   }
+
+  @override
+  String toString() {
+    return toMap().toString();
+  }
 }

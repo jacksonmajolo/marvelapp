@@ -16,17 +16,3 @@ class DotEnvService implements IEnvService {
     return dotenv.get(key);
   }
 }
-
-class EnvService {
-  final IEnvService env;
-
-  EnvService(this.env);
-
-  Future<void> load({String? file}) async {
-    env.load(file: file);
-  }
-
-  String get(String key) {
-    return env.get(key);
-  }
-}

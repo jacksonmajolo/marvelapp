@@ -5,5 +5,9 @@
     "@pageNotFound": {
         "description": "Página não encontrada!",
         "placeholders": {}
-    }
+    },
+    "pageNotFound_back": "Voltar",
+    "settingPageTitle": "Configurações",
+    "ligthTheme": "Tema claro",
+    "darkTheme": "Tema escuro"
 }

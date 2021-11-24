@@ -1,71 +1,58 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:http/http.dart' as http;
 
 abstract class IHttpService {
-  Future<dynamic> get(String url, {Map<String, String>? headers});
-  Future<dynamic> post(String url, dynamic body,
-      {Map<String, String>? headers});
-  Future<dynamic> put(String url, dynamic body, {Map<String, String>? headers});
-  Future<dynamic> delete(String url, {Map<String, String>? headers});
+  // Future<T> get<T>(String url, {Map<String, String>? headers});
+  Future<String> get(String url, {Map<String, String>? headers});
+  Future<T> post<T>(String url, {Object? body, Map<String, String>? headers});
+  Future<T> put<T>(String url, {Object? body, Map<String, String>? headers});
+  Future<T> delete<T>(String url, {Map<String, String>? headers});
 }
 
 class HttpService implements IHttpService {
   @override
-  Future<dynamic> get(String url, {Map<String, String>? headers}) async {
-    return _response(await http.get(Uri.parse(url), headers: headers));
+  Future<String> get(String url, {Map<String, String>? headers}) async {
+    // Future<T> get<T>(String url, {Map<String, String>? headers}) async {
+    final response = await http.get(
+      Uri.parse(url),
+      headers: headers,
+    );
+
+    // return json.decode(response.body) as T;
+    return response.body;
   }
 
   @override
-  Future<dynamic> post(String url, dynamic body,
-      {Map<String, String>? headers}) async {
-    return _response(
-        await http.post(Uri.parse(url), body: body, headers: headers));
+  Future<T> post<T>(String url,
+      {Object? body, Map<String, String>? headers}) async {
+    final response = await http.post(
+      Uri.parse(url),
+      body: body,
+      headers: headers,
+    );
+
+    return json.decode(response.body) as T;
   }
 
   @override
-  Future<dynamic> put(String url, dynamic body,
-      {Map<String, String>? headers}) async {
-    return _response(
-        await http.put(Uri.parse(url), body: body, headers: headers));
+  Future<T> put<T>(String url,
+      {Object? body, Map<String, String>? headers}) async {
+    final response = await http.put(
+      Uri.parse(url),
+      body: body,
+      headers: headers,
+    );
+
+    return json.decode(response.body) as T;
   }
 
   @override
-  Future<dynamic> delete(String url, {Map<String, String>? headers}) async {
-    return _response(await http.delete(Uri.parse(url), headers: headers));
-  }
+  Future<T> delete<T>(String url, {Map<String, String>? headers}) async {
+    final response = await http.delete(
+      Uri.parse(url),
+      headers: headers,
+    );
 
-  dynamic _response(http.Response response) {
-    final result = jsonDecode(response.body);
-    if (response.statusCode == HttpStatus.ok) {
-      return result;
-    } else {
-      throw Exception('Request failed with status: ${response.statusCode}');
-    }
-  }
-}
-
-class ClientHttpService {
-  final IHttpService client;
-
-  ClientHttpService(this.client);
-
-  Future<dynamic> get(String url, {Map<String, String>? headers}) {
-    return client.get(url, headers: headers);
-  }
-
-  Future<dynamic> post(String url, dynamic body,
-      {Map<String, String>? headers}) {
-    return client.post(url, body, headers: headers);
-  }
-
-  Future<dynamic> put(String url, dynamic body,
-      {Map<String, String>? headers}) {
-    return client.put(url, body, headers: headers);
-  }
-
-  Future<dynamic> delete(String url, {Map<String, String>? headers}) {
-    return client.delete(url, headers: headers);
+    return json.decode(response.body) as T;
   }
 }

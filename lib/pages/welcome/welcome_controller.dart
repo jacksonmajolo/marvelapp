@@ -1,1 +1,3 @@
-class WelcomeController {}
+class WelcomeController {
+  Future<void> initialize() async {}
+}
