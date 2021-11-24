@@ -5,13 +5,13 @@ part 'api.g.dart';
 @JsonSerializable(genericArgumentFactories: true)
 class ApiResponse<T> {
   @JsonKey(name: 'code')
-  final int code;
+  final String code;
 
   @JsonKey(name: 'status')
-  final String message;
+  final String? message;
 
   @JsonKey(name: 'data')
-  final T data;
+  final T? data;
 
   ApiResponse(
     this.code,
@@ -52,7 +52,7 @@ class ApiPaginateResponse<T> {
   final int count;
 
   @JsonKey(name: 'results')
-  final List<T> results;
+  final List<T?> results;
 
   ApiPaginateResponse(
     this.offset,

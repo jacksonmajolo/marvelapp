@@ -48,7 +48,7 @@ class _HomePageMobileState extends MarvelPage<_HomePageMobile> {
           ElevatedButton(
             child: const Text('Rota'),
             onPressed: () {
-              Navigator.pushNamed(context, '/errada');
+              Navigator.pushNamed(context, '/wrong-route');
             },
           ),
         ],
