@@ -12,8 +12,11 @@ abstract class MarvelPage<T extends StatefulWidget> extends AppPage {
   }
 
   @override
-  Widget buildErrorWidget(BuildContext context,
-      {Object? error, StackTrace? stackTrace}) {
+  Widget buildErrorWidget(
+    BuildContext context, {
+    Object? error,
+    StackTrace? stackTrace,
+  }) {
     AppErrorReport.report(AppError.dart, error: error, stackTrace: stackTrace);
     return const Center(
       child: Text('error'),

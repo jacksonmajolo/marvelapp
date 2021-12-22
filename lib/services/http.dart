@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+abstract class IHttpInterceptor {}
+
 abstract class IHttpService {
-  // Future<T> get<T>(String url, {Map<String, String>? headers});
-  Future<String> get(String url, {Map<String, String>? headers});
+  Future<T> get<T>(String url, {Map<String, String>? headers});
   Future<T> post<T>(String url, {Object? body, Map<String, String>? headers});
   Future<T> put<T>(String url, {Object? body, Map<String, String>? headers});
   Future<T> delete<T>(String url, {Map<String, String>? headers});
@@ -11,20 +12,24 @@ abstract class IHttpService {
 
 class HttpService implements IHttpService {
   @override
-  Future<String> get(String url, {Map<String, String>? headers}) async {
-    // Future<T> get<T>(String url, {Map<String, String>? headers}) async {
+  Future<T> get<T>(
+    String url, {
+    Map<String, String>? headers,
+  }) async {
     final response = await http.get(
       Uri.parse(url),
       headers: headers,
     );
 
-    // return json.decode(response.body) as T;
-    return response.body;
+    return json.decode(response.body) as T;
   }
 
   @override
-  Future<T> post<T>(String url,
-      {Object? body, Map<String, String>? headers}) async {
+  Future<T> post<T>(
+    String url, {
+    Object? body,
+    Map<String, String>? headers,
+  }) async {
     final response = await http.post(
       Uri.parse(url),
       body: body,
@@ -35,8 +40,11 @@ class HttpService implements IHttpService {
   }
 
   @override
-  Future<T> put<T>(String url,
-      {Object? body, Map<String, String>? headers}) async {
+  Future<T> put<T>(
+    String url, {
+    Object? body,
+    Map<String, String>? headers,
+  }) async {
     final response = await http.put(
       Uri.parse(url),
       body: body,
@@ -47,7 +55,10 @@ class HttpService implements IHttpService {
   }
 
   @override
-  Future<T> delete<T>(String url, {Map<String, String>? headers}) async {
+  Future<T> delete<T>(
+    String url, {
+    Map<String, String>? headers,
+  }) async {
     final response = await http.delete(
       Uri.parse(url),
       headers: headers,

@@ -1,4 +1,10 @@
+import 'package:marvelapp/models/character/character.dart';
+
 class CharacaterRepository {
+  Future<Character?> get(int id) async {
+    // final IHttpService client = GetIt.instance.get<IHttpService>();
+  }
+
   // Future<Character?> get(int id) async {
   //   final String result = await MarvelRepository.get('charascters/$id');
 

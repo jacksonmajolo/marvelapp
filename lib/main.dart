@@ -15,7 +15,7 @@ void main() {
       );
     };
     runApp(const App(
-      AppRoutes.home,
+      AppRoutes.welcome,
       splash: AppRoutes.splash,
     ));
   }, (error, stackTrace) {

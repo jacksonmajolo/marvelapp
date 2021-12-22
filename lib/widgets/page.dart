@@ -15,8 +15,11 @@ abstract class AppPage<T extends StatefulWidget> extends State {
   Future<void> initialize() async {}
   Widget buildLoadingWidget(BuildContext context);
   Widget buildWidget(BuildContext context);
-  Widget buildErrorWidget(BuildContext context,
-      {Object? error, StackTrace? stackTrace});
+  Widget buildErrorWidget(
+    BuildContext context, {
+    Object? error,
+    StackTrace? stackTrace,
+  });
 
   @override
   Widget build(BuildContext context) {

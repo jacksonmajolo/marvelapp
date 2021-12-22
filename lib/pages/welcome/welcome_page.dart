@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:marvelapp/components/page.dart';
 import 'package:marvelapp/pages/welcome/welcome_controller.dart';
 import 'package:marvelapp/widgets/responsive.dart';
@@ -30,6 +29,19 @@ class _WelcomePageMobileState extends MarvelPage<_WelcomePageMobile> {
 
   @override
   Widget buildWidget(BuildContext context) {
-    return Container();
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('welcome'),
+          ElevatedButton(
+            child: const Text('home'),
+            onPressed: () {
+              controller.onLoggin(context);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

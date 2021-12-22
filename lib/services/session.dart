@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ISessionService {
   Future<bool> set(String key, dynamic value);
-  Future<Object?> get(String key);
+  Future<T?> get<T>(String key);
   Future<bool> remove(String key);
   Future<bool> clear();
 }
@@ -44,9 +44,11 @@ class SharedPreferencesService implements ISessionService {
   }
 
   @override
-  Future<Object?> get(String key) async {
+  Future<T?> get<T>(String key) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.get(key);
+
+    final result = prefs.get(key);
+    return result != null ? result as T : null;
   }
 
   @override

@@ -11,10 +11,10 @@ import 'package:marvelapp/pages/splash_page.dart';
 import 'package:marvelapp/pages/welcome/welcome_page.dart';
 
 class AppRoutes {
-  static const splash = '/splash';
-  static const welcome = '/welcome';
-  static const home = '/home';
-  static const setting = '/setting';
+  static const String splash = '/splash';
+  static const String welcome = '/welcome';
+  static const String home = '/home';
+  static const String setting = '/setting';
 }
 
 class AppRouter {

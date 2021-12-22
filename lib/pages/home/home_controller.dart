@@ -1,5 +1,6 @@
 class HomeController {
   Future<void> initialize() async {
+    // final IHttpService client = GetIt.instance.get<IHttpService>();
     // final CharacaterRepository repository = CharacaterRepository();
 
     // final Character? character = await repository.get(1011334);

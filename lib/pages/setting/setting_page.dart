@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:marvelapp/components/page.dart';
 import 'package:marvelapp/pages/setting/setting_controller.dart';
