@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:marvelapp/components/page.dart';
 import 'package:marvelapp/pages/welcome/welcome_controller.dart';
+import 'package:marvelapp/widgets/platform.dart';
 import 'package:marvelapp/widgets/responsive.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends PlatformWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget buildWidget(BuildContext context) {
     return Scaffold(
       body: ResponsiveLayout(
         mobileLayout: _WelcomePageMobile(),

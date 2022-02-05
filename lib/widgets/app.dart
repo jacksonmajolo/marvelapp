@@ -35,7 +35,7 @@ class App extends StatelessWidget {
   }
 }
 
-class _AppBuilder extends PlatformWidget<CupertinoApp, MaterialApp> {
+class _AppBuilder extends PlatformWidget {
   final String home;
 
   const _AppBuilder(this.home, {Key? key}) : super(key: key);

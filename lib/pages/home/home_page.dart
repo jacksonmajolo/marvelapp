@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:marvelapp/components/page.dart';
 import 'package:marvelapp/pages/home/home_controller.dart';
+import 'package:marvelapp/widgets/platform.dart';
 import 'package:marvelapp/widgets/responsive.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends PlatformWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget buildWidget(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
