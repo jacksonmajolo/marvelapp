@@ -11,24 +11,26 @@ class ResponsiveLayout extends StatelessWidget {
   final Widget? tabletLayout;
   final Widget? desktopLayout;
 
-  const ResponsiveLayout(
-      {Key? key,
-      required this.mobileLayout,
-      this.tabletLayout,
-      this.desktopLayout})
-      : super(key: key);
+  const ResponsiveLayout({
+    Key? key,
+    required this.mobileLayout,
+    this.tabletLayout,
+    this.desktopLayout,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth < ResponsiveSizes.mobile) {
-        return mobileLayout;
-      } else if (constraints.maxWidth >= ResponsiveSizes.mobile &&
-          constraints.maxWidth < ResponsiveSizes.desktop) {
-        return tabletLayout ?? mobileLayout;
-      } else {
-        return desktopLayout ?? (tabletLayout ?? mobileLayout);
-      }
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth < ResponsiveSizes.mobile) {
+          return mobileLayout;
+        } else if (constraints.maxWidth >= ResponsiveSizes.mobile &&
+            constraints.maxWidth < ResponsiveSizes.desktop) {
+          return tabletLayout ?? mobileLayout;
+        } else {
+          return desktopLayout ?? (tabletLayout ?? mobileLayout);
+        }
+      },
+    );
   }
 }

@@ -5,8 +5,11 @@ import 'dart:developer';
 enum AppError { dart, flutter }
 
 class AppErrorReport {
-  static void report(AppError appError,
-      {Object? error, StackTrace? stackTrace}) {
+  static void report(
+    AppError appError, {
+    Object? error,
+    StackTrace? stackTrace,
+  }) {
     log('Error on $appError', error: error, stackTrace: stackTrace);
   }
 }

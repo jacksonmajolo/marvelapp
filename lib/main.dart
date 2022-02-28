@@ -14,10 +14,12 @@ void main() {
         stackTrace: errorDetails.stack,
       );
     };
-    runApp(const App(
-      AppRoutes.welcome,
-      splash: AppRoutes.splash,
-    ));
+    runApp(
+      const App(
+        AppRoutes.welcome,
+        splash: AppRoutes.splash,
+      ),
+    );
   }, (error, stackTrace) {
     AppErrorReport.report(
       AppError.dart,
