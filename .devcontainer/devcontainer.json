@@ -1,7 +1,7 @@
 {
     "name": "Flutter",
     "context": "..",
-    "dockerFile": "../.docker/flutter.dockerfile",
+    "dockerFile": "docker/flutter.dockerfile",
     "extensions": [
         "dart-code.dart-code",
         "dart-code.flutter",
