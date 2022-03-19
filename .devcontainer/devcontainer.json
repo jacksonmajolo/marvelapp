@@ -1,7 +1,10 @@
 {
-    "name": "Flutter",
-    "context": "..",
-    "dockerFile": "docker/flutter.dockerfile",
+    "name": "marvelapp",
+    "dockerComposeFile": [
+        "docker/docker-compose.yml"
+    ],
+    "workspaceFolder": "/var/www/marvelapp",
+    "service": "marvelapp-flutter",
     "extensions": [
         "dart-code.dart-code",
         "dart-code.flutter",

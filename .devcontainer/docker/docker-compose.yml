@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  marvelapp-flutter:
+    build:
+      dockerfile: flutter.dockerfile
+      context: .
+    image: marvelapp-flutter
+    container_name: marvelapp-flutter
+    tty: true
+    restart: unless-stopped
+    volumes:
+      - ../../:/var/www/marvelapp/
+    networks:
+      - marvelapp
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "5037:5037"
+      - "9100:9100"
+
+networks:
+  marvelapp:
+    driver: bridge
